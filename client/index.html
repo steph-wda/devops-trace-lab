@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Back End Assessment</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="container">
+  <button id="complimentButton">Get a compliment</button>
+  <button id="fortuneButton">Get a cookie fortune</button>
+
+  <section id="triviaSection">
+    <h2>Computer Programming Trivia</h2>
+    <p>Sharpen your skills with programming trivia questions!</p>
+    <form id="trivia">
+      <label for="questionQuantity">Select the number of questions:</label>
+      <input type="number" id="questionQuantity" min="1" max="5">
+      <input type="submit" id="triviaSubmit">
+    </form>
+    <div id="triviaContainer"></div>
+  </section>
+
+  <section id="allDisplay"></section>
+  <section> 
+    <div id="addTrivia">
+    <h2>Add Your Own Programming Trivia </h2>
+    <p>Use the form below to add or edit trivia questions</p>
+    <form>
+      <input type="idNumber" placeholder="Enter in question ID to edit">
+      <textarea id="triviaQuestion" placeholder="Enter in your question here"></textarea>
+      <textarea id="triviaAnswer" placeholder="Enter in the answer here"></textarea>
+      <button id="editTrivia">Save Edit</button>
+      <button id="addQuestion">Add New Question</button>
+
+
+    </form>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
