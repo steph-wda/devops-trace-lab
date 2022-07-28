@@ -1,3 +1,5 @@
+
+
 let triviaQA = [
   {
     id: 1,
@@ -67,81 +69,18 @@ let triviaQA = [
 let tID = 11
 
 
-module.exports = {
-  getCompliment: (req, res) => {
-    const compliments = [
-      "Gee, you're a smart cookie!",
-      "Cool shirt!",
-      "Your Javascript skills are stellar.",
-    ];
+// module.exports = {
 
-    // choose random compliment
-    let randomIndex = Math.floor(Math.random() * compliments.length);
-    let randomCompliment = compliments[randomIndex];
-
-    res.status(200).send(randomCompliment);
-  },
-
-  getFortune: (req, res) => {
-    const fortunes = [
-      "It’s not the amount of time you devote, but what you devote to the time that counts.",
-      "It’s time to get moving. Your spirits will lift accordingly.",
-      "Living with a commitment to excellence shall take you far.",
-      "Nature, time and patience are the three great physicians.",
-      "Observe all men, but most of all yourself.",
-    ];
-
-    let randomIndex = Math.floor(Math.random() * fortunes.length);
-    let randomFortune = fortunes[randomIndex];
-
-    res.status(200).send(randomFortune);
-  },
-  getTrivia: (req, res) => {
-    const {amount} = req.query
-    sendTrivia = []
-    for(i=0; sendTrivia.length < amount; i++){
-        let randomIndex = Math.floor(Math.random() * triviaQA.length);
-        let randomQuestion = triviaQA[randomIndex];
-        if(!sendTrivia.includes(randomQuestion)){
-            sendTrivia.push(randomQuestion)
-        }
-    }
-    res.status(200).send(sendTrivia);
-  },
-
-  deleteTrivia: (req, res) => {
-    let {id} = req.params
-    let index = triviaQA.findIndex((set) => set.id === +id);
-    if(index !== -1){
-        triviaQA.splice(index,1)  
-    }
-    res.status(200).send(triviaQA)
-  },
-
-  createTrivia: (req, res) => {
-    const {question, correct_answer} = req.body;
-    const newSet = {
-        id:tID,
-        question,
-        correct_answer,
-        reviewed:false
-
-    }
-    triviaQA.push(newSet)
-    res.status(200).send(triviaQA)
-    tID++
-  },
-
-//   updateTrivia: (req, res) => {
-//     const {id} = req.params
-//     const {question, answer} =req.body
-//     let index = triviaQA.findIndex((set) => set.id === +id);
-//     if(index !== -1){
-//         res.status(400).send('Invalid ID') 
-//     }else{
-//        triviaQA[index].question = question
-//        triviaQA[index].correct_answer = answer
-//     }
-//     res.status(200).send(triviaQA) 
-//   }
-     };
+// //   updateTrivia: (req, res) => {
+// //     const {id} = req.params
+// //     const {question, answer} =req.body
+// //     let index = triviaQA.findIndex((set) => set.id === +id);
+// //     if(index !== -1){
+// //         res.status(400).send('Invalid ID') 
+// //     }else{
+// //        triviaQA[index].question = question
+// //        triviaQA[index].correct_answer = answer
+// //     }
+// //     res.status(200).send(triviaQA) 
+// //   }
+//      };
