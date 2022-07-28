@@ -39,4 +39,5 @@ app.delete("/api/trivia/:id", deleteTrivia);
 app.post("/api/trivia/", createTrivia);
 // app.put("/api/trivia/:id", updateTrivia);
 
-app.listen(4000, () => console.log("Server running on 4000"));
+const SERVER_PORT = process.env.PORT || 4000
+app.listen(SERVER_PORT, () => console.log("Server running on 4000"));
