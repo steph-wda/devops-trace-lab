@@ -29,7 +29,7 @@ const {
 } = require('./controller')
 
 app.get("/", (req, res) => {
-    res.sendFile(path.resolve("public/landing.html"));
+    res.sendFile(path.resolve("client/index.html"));
   });
 
 app.get("/api/compliment", getCompliment);
