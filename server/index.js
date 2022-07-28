@@ -1,3 +1,4 @@
+
 require('dotenv').config()
 const express = require("express");
 const cors = require("cors");
@@ -26,6 +27,10 @@ const {
     createTrivia,
     // updateTrivia 
 } = require('./controller')
+
+app.get("/", (req, res) => {
+    res.sendFile(path.resolve("public/landing.html"));
+  });
 
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
