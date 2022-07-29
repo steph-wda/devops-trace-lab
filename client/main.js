@@ -91,11 +91,24 @@ const createCard = (e) => {
     answer: answerInput.value.toLowerCase(),
   };
 
-  axios.post(`http://localhost:4000/api/trivia`, body).then((res) => {
-    questionInput.value = "";
-    answerInput.value = "";
-    displayAll(res.data);
-  });
+  try {
+    if (question === "" || answer === "") {
+
+      rollbar.error('Someone did not eneter the required information to create a new card')
+      res.status(400).send("Question and Answer field must be filled out");
+    } else {
+        rollbar.error('Someone tried to enter a duplicate student name')
+        axios.post(`http://localhost:4000/api/trivia`, body).then((res) => {
+          questionInput.value = "";
+          answerInput.value = "";
+          rollbar.info("Card was added")
+          displayAll(res.data);
+        })
+    }
+  } catch (err) {
+    console.log(err)
+    rollbar.error(err)
+  }
 
 };
 

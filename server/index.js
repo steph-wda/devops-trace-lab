@@ -149,7 +149,7 @@ app.delete("/api/trivia/:id", (req, res) => {
     if(index !== -1){
         triviaQA.splice(index,1)  
     }
-    rollbar.warning(`someone has deleted a card`) //fires when trivia is deleted
+    rollbar.warning('Card has been deleted')//fires when trivia is deleted
     res.status(200).send(triviaQA)
   });
 
