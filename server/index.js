@@ -108,7 +108,7 @@ app.get("/api/compliment", (req, res) => {
     // choose random compliment
     let randomIndex = Math.floor(Math.random() * compliments.length);
     let randomCompliment = compliments[randomIndex];
-
+    rollbar.info(`someone got a compliment`) //fires when compliment button is clicked
     res.status(200).send(randomCompliment);
   });
 
@@ -123,7 +123,7 @@ app.get("/api/fortune", (req, res) => {
 
     let randomIndex = Math.floor(Math.random() * fortunes.length);
     let randomFortune = fortunes[randomIndex];
-
+    rollbar.info(`someone got a fortune`) //fires when fortune is clicked button is clicked
     res.status(200).send(randomFortune);
   },
 );
@@ -138,6 +138,7 @@ app.get("/api/trivia/", (req, res) => {
             sendTrivia.push(randomQuestion)
         }
     }
+    rollbar.info(`trivia question loaded`) //fires when submit button is clicked
     res.status(200).send(sendTrivia);
   });
 
@@ -148,6 +149,7 @@ app.delete("/api/trivia/:id", (req, res) => {
     if(index !== -1){
         triviaQA.splice(index,1)  
     }
+    rollbar.warning(`someone has deleted a card`) //fires when trivia is deleted
     res.status(200).send(triviaQA)
   });
 
@@ -158,13 +160,15 @@ app.post("/api/trivia/", (req, res) => {
         question,
         correct_answer,
         reviewed:false
-
     }
     triviaQA.push(newSet)
+    rollbar.info(`someone added a question`)
     res.status(200).send(triviaQA)
     tID++
   });
 // app.put("/api/trivia/:id", updateTrivia);
+
+
 
 const SERVER_PORT = process.env.PORT || 4000
 app.listen(SERVER_PORT, () => console.log("Server running on 4000"));
