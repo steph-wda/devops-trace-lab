@@ -97,7 +97,7 @@ const createCard = (e) => {
       rollbar.error('Someone did not eneter the required information to create a new card')
       res.status(400).send("Question and Answer field must be filled out");
     } else {
-        rollbar.error('Someone tried to enter a duplicate student name')
+        rollbar.log('boo')
         axios.post(`http://localhost:4000/api/trivia`, body).then((res) => {
           questionInput.value = "";
           answerInput.value = "";
