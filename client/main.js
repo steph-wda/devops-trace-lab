@@ -11,14 +11,14 @@ const idInput = document.getElementById("idNumber")
 const editTriviaBtn = document.getElementById("addTrivia")
 
 const getCompliment = () => {
-  axios.get("http://localhost:4000/api/compliment/").then((res) => {
+  axios.get("/api/compliment/").then((res) => {
     const data = res.data;
     alert(data);
   });
 };
 
 const getFortune = () => {
-  axios.get("http://localhost:4000/api/fortune/").then((res) => {
+  axios.get("/api/fortune/").then((res) => {
     const data = res.data;
     alert(data);
   });
@@ -46,7 +46,7 @@ const displayAll = (triviaArray) => {
 //DELETE Request
 const deleteTrivia = (id) => {
   triviaAll.innerHTML = "";
-  axios.delete(`http://localhost:4000/api/trivia/${id}`).then((res) => {
+  axios.delete(`/api/trivia/${id}`).then((res) => {
     displayAll(res.data);
   });
 };
@@ -78,7 +78,7 @@ const getTriviaHandler = (e) => {
   triviaDiv.innerHTML = "";
 
   let amount = triviaSelect.value;
-  axios.get(`http://localhost:4000/api/trivia?amount=${amount}`).then((res) => {
+  axios.get(`/api/trivia?amount=${amount}`).then((res) => {
     displayTrivia(res.data);
   });
 };
@@ -98,7 +98,7 @@ const createCard = (e) => {
       res.status(400).send("Question and Answer field must be filled out");
     } else {
         rollbar.log('boo')
-        axios.post(`http://localhost:4000/api/trivia`, body).then((res) => {
+        axios.post(`/api/trivia`, body).then((res) => {
           questionInput.value = "";
           answerInput.value = "";
           rollbar.info("Card was added")
